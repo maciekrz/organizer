@@ -1,0 +1,7 @@
+*.exe
+*.pdf
+backup.cpp
+*.sln
+*.vcx*
+.vs
+Debug
