@@ -135,7 +135,7 @@ public:
                 temp = "";
                 if (value == true)  done = "X";
                 else                done = " ";
-                std::cout << " " << counter << ")\t[" << done << "]\t" << key << "\n";
+                std::cout << " " << counter << ")\t[" << done << "]\t" << key << " PLN\n";
 
                 // calculating the cost - looking for a number in the string that isn't on the position 0
                 size_t i = 0;
@@ -143,13 +143,13 @@ public:
                 {
                     if (isdigit(key[i]) && i != 0)    break;
                 }
-                temp = key.substr(i, key.length() - i);
-                totalCost += atof(temp.c_str());
+                temp = key.substr(i, key.length() - i);     // splitting the string to name and number
+                totalCost += atof(temp.c_str());            // atof converts string to double
 
                 counter++;
             }
         }
-        std::cout << "Total cost: " << totalCost << "\n";
+        std::cout << "Total cost: " << totalCost << " PLN\n";
         std::cout << "\n == what to do? ==\n> ";
         return;
     }
@@ -172,7 +172,8 @@ public:
                 temp = "";
                 if (value == true)  done = "X";
                 else                done = " ";
-                outputfile << " " << counter << ")\t[" << done << "]\t" << key << "\n";
+                outputfile << " " << counter << ")\t[" << done << "]\t" << key << " PLN\n";
+
                 // calculating the cost - looking for a number in the string that isn't on the position 0
                 size_t i = 0;
                 for (; i < key.length(); i++)
@@ -181,10 +182,11 @@ public:
                 }
                 temp = key.substr(i, key.length() - i);
                 totalCost += atof(temp.c_str());
+
                 counter++;
             }
         }
-        outputfile << "Total cost: " << totalCost << "\n";
+        outputfile << "Total cost: " << totalCost << " PLN\n";
         outputfile.close();
         this->printTasks();
     }
@@ -213,7 +215,7 @@ public:
 void interactiveMode(Organizer& list)
 {
     std::string input = "";
-    std::cout << "\np - prints the list\na *name* - adds a task\nr *name* - removes a task\nr [-a/--all] - removes all tasks\nr [-f/--finished] - removes finished tasks\nu *name* - updates task's status to 'done'\nf *name* - prints the list to a file with given name\nh - shows this message\nq - goes back to choosing a list\n\n";
+    //std::cout << "\np - prints the list\na *name* - adds a task\nr *name* - removes a task\nr [-a/--all] - removes all tasks\nr [-f/--finished] - removes finished tasks\nu *name* - updates task's status to 'done'\nf *name* - prints the list to a file with given name\nh - shows this message\nq - goes back to choosing a list\n(for shopping list include the cost at the end of the name)\n\n";
     list.printTasks();
     while (1)
     {
@@ -272,7 +274,7 @@ void interactiveMode(Organizer& list)
         }
         else if ("h" == choice) // printing help
         {
-            std::cout << "\np - prints the list\na *name* - adds a task\nr *name* - removes a task\nr [-a/--all] - removes all tasks\nr [-f/--finished] - removes finished tasks\nu *name* - updates task's status to 'done'\nf *name* - prints the list to a file with given name\nh - shows this message\nq - goes back to choosing a list\n\n";
+            std::cout << "\np - prints the list\na *name* - adds a task\nr *name* - removes a task\nr [-a/--all] - removes all tasks\nr [-f/--finished] - removes finished tasks\nu *name* - updates task's status to 'done'\nf *name* - prints the list to a file with given name\nh - shows this message\nq - goes back to choosing a list\n(for shopping list include the cost at the end of the name)\n\n> ";
         }
         else if ("q" == choice) // exiting
         {
@@ -280,7 +282,7 @@ void interactiveMode(Organizer& list)
         }
         else
         {
-            std::cout << "Wrong command! (type 'h' to print help!)\n> ";
+            std::cout << "(type 'h' to print help)\n> ";
         }
     }
     return;
