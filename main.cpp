@@ -73,7 +73,7 @@ public:
         return;
     }
 
-    void toFile(std::string fileName)
+    virtual void toFile(std::string fileName)
     {
         std::ofstream outputfile;
         outputfile.open(fileName);
@@ -152,6 +152,41 @@ public:
         std::cout << "Total cost: " << totalCost << "\n";
         std::cout << "\n == what to do? ==\n> ";
         return;
+    }
+
+    void toFile(std::string fileName)
+    {
+        std::ofstream outputfile;
+        outputfile.open(fileName);
+
+        std::string done = "";
+        int counter = 1;
+        double totalCost = 0;
+        std::string temp;
+        outputfile << "\n\t=== " << this->listName << " ===\n";
+        if (this->tasks.empty())  std::cout << "\t*empty*\n";
+        else
+        {
+            for (const auto& [key, value] : this->tasks) 
+            {
+                temp = "";
+                if (value == true)  done = "X";
+                else                done = " ";
+                outputfile << " " << counter << ")\t[" << done << "]\t" << key << "\n";
+                // calculating the cost - looking for a number in the string that isn't on the position 0
+                size_t i = 0;
+                for (; i < key.length(); i++)
+                {
+                    if (isdigit(key[i]) && i != 0)    break;
+                }
+                temp = key.substr(i, key.length() - i);
+                totalCost += atof(temp.c_str());
+                counter++;
+            }
+        }
+        outputfile << "Total cost: " << totalCost << "\n";
+        outputfile.close();
+        this->printTasks();
     }
 
     ShoppingList()

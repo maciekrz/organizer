@@ -5,3 +5,4 @@ backup.cpp
 *.vcx*
 .vs
 Debug
+*.txt
