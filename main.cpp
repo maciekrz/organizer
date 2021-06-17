@@ -109,8 +109,8 @@ public:
     }
     ~Organizer()                        // destructor
     {
-//        std::cout << "\nDeleting the class " << listName;
-//        delete[] this->listName;
+        std::cout << "\nDeleting the class " << listName;
+        delete[] this->listName;
     }
 };
 
@@ -135,11 +135,11 @@ public:
                 else                done = " ";
                 std::cout << " " << counter << ")\t[" << done << "]\t" << key << "\n";
 
-                // calculating the cost
+                // calculating the cost - looking for a number in the string that isn't on the position 0
                 size_t i = 0;
                 for (; i < key.length(); i++)
                 {
-                    if (isdigit(key[i]))    break;
+                    if (isdigit(key[i]) && i != 0)    break;
                 }
                 temp = key.substr(i, key.length() - i);
                 totalCost += atof(temp.c_str());
@@ -167,8 +167,8 @@ public:
     }
     ~ShoppingList()                        // destructor
     {
-        std::cout << "\nDeleting the class " << listName;
-        delete[] this->listName;
+        //std::cout << "\nDeleting the class " << listName;
+        //delete[] this->listName;
     }
 };
 
@@ -277,7 +277,7 @@ void interactiveMode(Organizer& list)
 
 int main()
 {
-    Organizer home("HOME"), work("WORK"), shopping("SHOPPING");
+    Organizer home("HOME"), work("WORK");
     ShoppingList SL("SHOPPING LIST");
     std::cout << "\nType in the name of a list to see its content or \"end\" to exit the program\n";
     std::string listName = "";
@@ -287,7 +287,6 @@ int main()
         std::cin >> listName;
         if ("home" == listName)             interactiveMode(home);
         else if ("work" == listName)        interactiveMode(work);
-        //else if ("shopping" == listName)    interactiveMode(shopping);
         else if ("shopping" == listName)    interactiveMode(SL);
         else if ("end" == listName)         break;
         else                                std::cout << "Wrong name!";
