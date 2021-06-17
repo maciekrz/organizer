@@ -5,13 +5,15 @@
 
 class Organizer
 {
-    //char* listname;
-    //std::map<std::string, bool> tasks;
+
+protected:
+    char* listName;
+    std::map<std::string, bool> tasks;
 
 public:
 
-    char* listName;
-    std::map<std::string, bool> tasks;      // string is the task and bool is its status (finished or not)
+    //char* listName;
+    //std::map<std::string, bool> tasks;      // string is the task and bool is its status (finished or not)
 
     int countTasks()
     {
@@ -172,32 +174,6 @@ public:
     }
 };
 
-/*
-class ShoppingList :public Organizer
-{
-public:
-    char* listName;
-
-    ShoppingList()
-    {
-        this->listName = nullptr;
-    }
-    ShoppingList(std::string _listName)    // constructor
-    {
-        this->listName = new char[_listName.size() + 1];
-        for (size_t i = 0; i < _listName.size(); i++)
-        {
-            this->listName[i] = _listName[i];
-        }
-        this->listName[_listName.size()] = '\0';
-    }
-    ~ShoppingList()                        // destructor
-    {
-        std::cout << "\nDeleting the class " << listName;
-        delete[] this->listName;
-    }
-};
-*/
 
 void interactiveMode(Organizer& list)
 {
@@ -274,6 +250,7 @@ void interactiveMode(Organizer& list)
     }
     return;
 }
+
 
 int main()
 {
