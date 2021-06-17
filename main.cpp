@@ -10,11 +10,17 @@ int main()
     {
         std::cout << "\nChoose the list:\n[ home (" << home.countTasks() << ") ][ work (" << work.countTasks() << ") ][ shopping (" << SL.countTasks() << ") ][ end ]: ";
         std::cin >> listName;
-        if ("home" == listName)             interactiveMode(home);
-        else if ("work" == listName)        interactiveMode(work);
-        else if ("shopping" == listName)    interactiveMode(SL);
-        else if ("end" == listName)         break;
-        else                                std::cout << "Wrong name!";
+
+        if ("home" == listName || "HOME" == listName)
+            interactiveMode(home);
+        else if ("work" == listName || "WORK" == listName)
+            interactiveMode(work);
+        else if ("shopping" == listName || "SHOPPING" == listName)
+            interactiveMode(SL);
+        else if ("end" == listName)
+            break;
+        else
+            std::cout << "Wrong name!";
     }
     
     std::cout << "\n";
