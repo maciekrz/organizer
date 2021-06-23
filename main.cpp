@@ -1,28 +1,42 @@
-#include"header.h"
+#include "task.h"
+#include "organizer.h"
+#include "libraries.h"
 
-int main()
+
+int main()    
 {
-    Organizer home("HOME"), work("WORK");
-    ShoppingList SL("SHOPPING LIST");
-    std::cout << "\nType in the name of a list to see its content or \"end\" to exit the program\n";
-    std::string listName = "";
+    Organizer o1("home"), o2("work");
+    ShoppingList sl("groceries");
+    int choice;
+
+	std::cout << "\nType in the number of a list to see its content. Anything else will exit the program\n";
+
     while (1)
     {
-        std::cout << "\nChoose the list:\n[ home (" << home.countTasks() << ") ][ work (" << work.countTasks() << ") ][ shopping (" << SL.countTasks() << ") ][ end ]: ";
-        std::cin >> listName;
-
-        if ("home" == listName || "HOME" == listName)
-            interactiveMode(home);
-        else if ("work" == listName || "WORK" == listName)
-            interactiveMode(work);
-        else if ("shopping" == listName || "SHOPPING" == listName)
-            interactiveMode(SL);
-        else if ("end" == listName)
+        choice = NULL;
+        std::cout << "\nChoose the list:\n[ 1. " << o1.getName() << " (" << o1.countTasks() << ") ][ 2. " << o2.getName() << " (" << o2.countTasks() << ") ][ 3. " << sl.getName() << " (" << sl.countTasks() << ") ]\n ~> ";
+        std::cin >> choice;
+        
+        switch (choice)
+        {
+        case 1:
+            o1.interactiveMode();
             break;
-        else
-            std::cout << "Wrong name!";
+        case 2:
+            o2.interactiveMode();
+            break;
+        case 3:
+            sl.interactiveMode();
+            break;
+        default:
+            o1.removeAll();
+            o2.removeAll();
+            sl.removeAll();
+            return 0;
+        }
     }
-    
+ 
+
     std::cout << "\n";
     return 0;
 }
