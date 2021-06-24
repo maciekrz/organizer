@@ -4,12 +4,13 @@
 
 struct Task    
 {
-    std::string name;
-    bool status;
+    std::string name;   // name of the task
+    bool status;        // status of the task
 
     Task();
     ~Task();
 
+    // overloaded operator for outputting values
     friend std::ostream& operator<<(std::ostream& os, Task const& task) 
     {
         return os << task.name << "\n|\t(" << task.desc << ")\n";
@@ -18,7 +19,7 @@ struct Task
     virtual void print();
     virtual void set(std::string_view _name, std::string_view _desc, bool _status);
 private:
-    std::string desc;
+    std::string desc;   // description of the task
 };
 
 struct Product :public Task
@@ -36,5 +37,5 @@ struct Product :public Task
     double getCost();
 
 private:
-    double cost;
+    double cost;        // cost of the product
 };

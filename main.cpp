@@ -13,7 +13,6 @@ int main()
 
     while (1)
     {
-        //choice = NULL;
         std::cout << "\nChoose the list:\n[ 1. " << o1.getName() << " (" << o1.countTasks() << ") ][ 2. " << o2.getName() << " (" << o2.countTasks() << ") ][ 3. " << sl.getName() << " (" << sl.countTasks() << ") ]\n ~> ";
         std::cin >> choice;
         

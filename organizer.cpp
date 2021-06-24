@@ -1,10 +1,10 @@
 #include "organizer.h"
 
 //	Organizer class
-    void Organizer::printAll()
+    void Organizer::printAll()  // method for printing the whole list
     {
-        std::string heading = "+===  " + this->listName + "  ===+";
-        int headingLength = heading.length();
+        std::string heading = "+===  " + this->listName + "  ===+";     // heading for the list
+        int headingLength = heading.length();                           // needed for calculating the length of bottom bar
         std::cout << "\n" << heading << "\n|\n";
         int i = 1;
         for (auto x : this->list)
@@ -19,7 +19,7 @@
         std::cout << "|\n+" << std::string(headingLength-2, '=') << "+ \n\n";
     }
 
-    void Organizer::printListToFile()
+    void Organizer::printListToFile()   // same as printList() but to file
     {
         try 
         {
@@ -54,37 +54,37 @@
         }
     }
 
-    void Organizer::addTask()
+    void Organizer::addTask()   // method for adding a task to the vector "list"
     {
         std::string _name, _desc;
         std::cout << "Task name:  ";
-        std::cin.ignore();
+        std::cin.ignore();      // needed because sometimes a whitespace gets in as input
         std::getline(std::cin, _name);
-        if (_name == "")
+        if (_name == "")        // protection as 2 lines above
             std::getline(std::cin, _name);
 
         std::cout << "Task description:  ";
         std::getline(std::cin, _desc);
-        this->_task.set(_name, _desc, 0);
-        this->list.push_back(_task);
+        this->_task.set(_name, _desc, 0);   // setting new values to the task
+        this->list.push_back(_task);        // pushing a copy of that task to the vector
     }
 
     void Organizer::updateTask()
     {
-        std::string tmp;
+        std::string tmp;                    // temporary string for checking if input is a number
         int pos;
         std::cout << "Position of task to change status:  ";
         std::cin >> tmp;
         std::istringstream iss(tmp);
-        if (iss >> pos && this->list.size() >= pos && pos > 0)
-            this->list[pos - 1].status = !this->list[pos - 1].status;
+        if (iss >> pos && this->list.size() >= pos && pos > 0)  // checking if input is a number
+            this->list[pos - 1].status = !this->list[pos - 1].status;   // inverting value of status
         else
             std::cout << "No such position in the list!\n";
     }
 
     void Organizer::removeTask()
     {
-        std::string tmp;
+        std::string tmp;                    // same as in updpateTask()
         int pos;
         std::cout << "Position of task to remove:  ";
         std::cin >> tmp;
@@ -102,9 +102,9 @@
     void Organizer::removeFinished()
     {
         int i = 0;
-        for (auto x : this->list)
+        for (auto x : this->list)   // looping throught the vector
         {
-            if (x.status)
+            if (x.status)   // x.status == 1  =  done
             {
                 this->list.erase(this->list.begin() + i);
             }
@@ -129,12 +129,12 @@
         return this->list.size();
     }
 
-    std::string Organizer::getName()
+    std::string Organizer::getName()    // getter to get private member of the class
     {
         return this->listName;
     }
 
-    void Organizer::setName()
+    void Organizer::setName()           // setter to set private member of the class
     {
         std::string _name;
         std::getline(std::cin, _name);
@@ -203,6 +203,7 @@
     }
     Organizer::~Organizer() { }
 
+//  Methods are basically the same below as they are above
 //  ShoppingList class
     void ShoppingList::printListToFile()
     {
