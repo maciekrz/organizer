@@ -26,7 +26,7 @@ public:
     std::string getName();
     void setName();
     void interactiveMode();
-    Organizer(std::string _listName);
+    Organizer(std::string_view _listName);
     Organizer();    
     ~Organizer();
 };
@@ -45,7 +45,7 @@ private:
     void updateTask();
 
 public:
-    ShoppingList(std::string _listName);
+    ShoppingList(std::string_view _listName);
     ShoppingList();
     ~ShoppingList();
     void removeAll();

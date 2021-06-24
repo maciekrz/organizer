@@ -21,25 +21,37 @@
 
     void Organizer::printListToFile()
     {
-        std::string fileName = this->listName + ".txt";
-        std::cout << "Printing to file " << fileName << "\n";
-        std::ofstream outputfile;
-        outputfile.open(fileName);
-        std::string heading = "+===  " + this->listName + "  ===+";
-        int headingLength = heading.length();
-        outputfile << "\n" << heading << "\n|\n";
-        int i = 1;
-        for (auto x : this->list)
+        try 
         {
-            std::string X = " ";
-            if (x.status)
-                X = "X";
-            outputfile << "| [" << X << "] " << i << ") ";
-            outputfile << x;
-            i++;
+            std::string fileName = this->listName + ".txt";
+            std::cout << "Printing to file " << fileName << "\n";
+            std::ofstream outputfile;
+            outputfile.open(fileName);
+            if (!outputfile.is_open())
+            {
+                throw "error";
+                return;
+            }
+            std::string heading = "+===  " + this->listName + "  ===+";
+            int headingLength = heading.length();
+            outputfile << "\n" << heading << "\n|\n";
+            int i = 1;
+            for (auto x : this->list)
+            {
+                std::string X = " ";
+                if (x.status)
+                    X = "X";
+                outputfile << "| [" << X << "] " << i << ") ";
+                outputfile << x;
+                i++;
+            }
+            outputfile << "|\n+" << std::string(headingLength - 2, '=') << "+ \n\n";
+            outputfile.close();
         }
-        outputfile << "|\n+" << std::string(headingLength-2, '=') << "+ \n\n";
-        outputfile.close();
+        catch (std::exception& e)
+        {
+            std::cout << "Error! Couldn't open the file.\n";
+        }
     }
 
     void Organizer::addTask()
@@ -184,7 +196,7 @@
         return;
     }
 
-    Organizer::Organizer(std::string _listName) : listName(_listName) {}
+    Organizer::Organizer(std::string_view _listName) : listName(_listName) {}
     Organizer::Organizer() 
     {
         this->listName = "";
@@ -303,7 +315,7 @@
             std::cout << "No such position in the list!\n";
     }
 
-    ShoppingList::ShoppingList(std::string _listName) : Organizer(_listName) {}
+    ShoppingList::ShoppingList(std::string_view _listName) : Organizer(_listName) {}
     ShoppingList::ShoppingList() 
     {
         this->listName = "";

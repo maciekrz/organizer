@@ -4,7 +4,7 @@
 
 struct Task    
 {
-    char* name;
+    std::string name;
     bool status;
 
     Task();
@@ -16,9 +16,9 @@ struct Task
     }
 
     virtual void print();
-    virtual void set(std::string _name, std::string _desc, bool _status);
+    virtual void set(std::string_view _name, std::string_view _desc, bool _status);
 private:
-    char* desc;
+    std::string desc;
 };
 
 struct Product :public Task
@@ -32,7 +32,7 @@ struct Product :public Task
     }
 
     void print();
-    void set(std::string _name, double _cost, bool _status);
+    void set(std::string_view _name, double _cost, bool _status);
     double getCost();
 
 private:
