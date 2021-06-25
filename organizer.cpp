@@ -65,7 +65,7 @@
 
         std::cout << "Task description:  ";
         std::getline(std::cin, _desc);
-        this->_task.set(_name, _desc, 0);   // setting new values to the task
+        this->_task.set(_name, _desc);   // setting new values to the task
         this->list.push_back(_task);        // pushing a copy of that task to the vector
     }
 
@@ -91,7 +91,7 @@
         std::istringstream iss(tmp);
         iss >> pos;
         if (iss.eof() && this->list.size() >= pos && pos > 0)
-            this->list.erase(this->list.begin() + pos - 1);
+            this->list.erase(this->list.begin() + pos - 1);     // removing a task
         else
             std::cout << "\nNo such position in the list!\n";
     }
@@ -257,7 +257,7 @@
         iss >> _cost;
         if (iss.eof())
         {
-            this->_product.set(_name, _cost, 0);
+            this->_product.set(_name, _cost);
             this->list.push_back(_product);
         }
         else

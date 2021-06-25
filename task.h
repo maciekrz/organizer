@@ -18,6 +18,7 @@ struct Task
 
     virtual void print();
     virtual void set(std::string_view _name, std::string_view _desc, bool _status);
+    virtual void set(std::string_view _name, std::string_view _desc);
 private:
     std::string desc;   // description of the task
 };
@@ -34,6 +35,7 @@ struct Product :public Task
 
     void print();
     void set(std::string_view _name, double _cost, bool _status);
+    void set(std::string_view _name, double _cost);
     double getCost();
 private:
     double cost;        // cost of the product

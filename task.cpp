@@ -21,6 +21,12 @@
         this->status = _status;
     }
 
+    void Task::set(std::string_view _name, std::string_view _desc)    // setting new values to the task
+    {
+        this->name = _name;
+        this->desc = _desc;
+        this->status = false;
+    }
 
 //  Product class
     Product::Product()
@@ -41,6 +47,13 @@
         this->name = _name;
         this->cost = _cost;
         this->status = _status;
+    }
+
+    void Product::set(std::string_view _name, double _cost)
+    {
+        this->name = _name;
+        this->cost = _cost;
+        this->status = false;
     }
 
     double Product::getCost() { return this->cost; }
