@@ -29,6 +29,7 @@
             outputfile.open(fileName);
             if (!outputfile.is_open())
             {
+                std::cout << "Failed...\n";
                 throw "error";
                 return;
             }
@@ -47,6 +48,7 @@
             }
             outputfile << "|\n+" << std::string(headingLength - 2, '=') << "+ \n\n";
             outputfile.close();
+            std::cout << "Done\n";
         }
         catch (std::exception& e)
         {
@@ -214,6 +216,7 @@
             outputfile.open(fileName);
             if (!outputfile.is_open())
             {
+                std::cout << "Failed...\n";
                 throw "error";
                 return;
             }
@@ -234,6 +237,7 @@
             }
             outputfile << "|\n+===\n|Total cost:\n| " << totalCost << " PLN\n+" << std::string(headingLength - 2, '=') << "+ \n\n";
             outputfile.close();
+            std::cout << "Done\n";
         }
         catch (std::exception& e)
         {
