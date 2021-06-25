@@ -50,7 +50,7 @@
         }
         catch (std::exception& e)
         {
-            std::cout << "Error! Couldn't open the file.\n";
+            std::cout << "Error! Couldn't open the file.\n" << e.what() << "\n";
         }
     }
 
@@ -207,27 +207,38 @@
 //  ShoppingList class
     void ShoppingList::printListToFile()
     {
-        std::string fileName = this->listName + ".txt";
-        std::cout << "Printing to file " << fileName << "\n";
-        std::ofstream outputfile;
-        outputfile.open(fileName);
-        std::string heading = "+===  " + this->listName + "  ===+";
-        int headingLength = heading.length();
-        outputfile << "\n" << heading << "\n|\n";
-        int i = 1;
-        double totalCost = 0;
-        for (auto x : this->list)
-        {
-            std::string X = " ";
-            if (x.status)
-                X = "X";
-            outputfile << "| [" << X << "] " << i << ") ";
-            outputfile << x;
-            totalCost += x.getCost();
-            i++;
+        try {
+            std::string fileName = this->listName + ".txt";
+            std::cout << "Printing to file " << fileName << "\n";
+            std::ofstream outputfile;
+            outputfile.open(fileName);
+            if (!outputfile.is_open())
+            {
+                throw "error";
+                return;
+            }
+            std::string heading = "+===  " + this->listName + "  ===+";
+            int headingLength = heading.length();
+            outputfile << "\n" << heading << "\n|\n";
+            int i = 1;
+            double totalCost = 0;
+            for (auto x : this->list)
+            {
+                std::string X = " ";
+                if (x.status)
+                    X = "X";
+                outputfile << "| [" << X << "] " << i << ") ";
+                outputfile << x;
+                totalCost += x.getCost();
+                i++;
+            }
+            outputfile << "|\n+===\n|Total cost:\n| " << totalCost << " PLN\n+" << std::string(headingLength - 2, '=') << "+ \n\n";
+            outputfile.close();
         }
-        outputfile << "|\n+===\n|Total cost:\n| " << totalCost << " PLN\n+" << std::string(headingLength-2, '=') << "+ \n\n";
-        outputfile.close();
+        catch (std::exception& e)
+        {
+            std::cout << "Error! Couldn't open the file.\n" << e.what() << "\n";
+        }
     }
 
     void ShoppingList::addTask()

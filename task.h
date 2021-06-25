@@ -35,7 +35,6 @@ struct Product :public Task
     void print();
     void set(std::string_view _name, double _cost, bool _status);
     double getCost();
-
 private:
     double cost;        // cost of the product
 };

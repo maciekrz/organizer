@@ -21,6 +21,7 @@
         this->status = _status;
     }
 
+
 //  Product class
     Product::Product()
     {
