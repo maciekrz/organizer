@@ -1,5 +1,4 @@
 *.exe
-*.pdf
 backup.cpp
 *.sln
 *.vcx*
@@ -9,3 +8,6 @@ Debug
 doxyconfig
 latex
 html
+*.aux
+*.log
+*.toc

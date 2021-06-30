@@ -1,0 +1,82 @@
+\documentclass{article}
+
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+	{\scshape\LARGE Politechnika Śląska
+
+    Wydział Automatyki, Elektroniki i Informatyki\par}
+	\vspace{1cm}
+	{\scshape\Large Computer Programming\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Organizer\par}
+	\vspace{2cm}
+	\vfill
+	author:
+	Maciej Krzyżowski\par 
+	instructor:
+	dr inż.~Michał Marczyk\par
+	year:
+	2020/2021 
+
+	\vfill
+
+\end{titlepage}
+
+\renewcommand*\contentsname{Summary}
+\tableofcontents
+\pagebreak
+
+\section{Project’s topic}
+
+A program should create lists (e.g.\ home, work, shopping) and enable the user to add tasks to the given list. The user should also remove the task from the list to mark the task as done.
+
+
+\section{User Interface}
+
+The program will display available lists with a number of tasks within given lists and prompt the user to input list's number to enter specific list. The user will also be given an option to exit the program. Upon choosing a list, its content will be shown with a short manual below containing commands that can be used. The tasks in the lists will be numbered and will have checkboxes next to them to display the task's status.
+
+The user will be able to add, update or remove tasks by their index or remove all or finished tasks. Besides, there will also be an option to print the list again, print the list to file, rename the list, show the manual or change the current list.
+
+\section{Classes and Data Structures}
+\subsection{Classes}
+
+The program contains four classes in total, two base and two derived classes, where Product inherits from class Task and ShoppingList inherits from class Organizer. 
+Class Task represents a task which is stored in a list. It has a name, a description and a status. Class Product inherits the name and status from class Task but instead of description it has a cost.
+
+Class Organizer contains a vector of objects of type Task, which acts as a list, and a name of the list. Class ShoppingList is an inherited class from the Organizer class with its vector storing objects of type Product.
+
+Inheritance diagrams and methods' descriptions are in the Doxygen part of the report.
+
+\subsection{Data Structures}
+
+The data structure being used in the program is the vector, which stores objects being either tasks or products, depending of list's type. Using vectors allows having a data structure with variable size and easy adding, modifying and removing elements.  
+
+\vfill
+
+\section{Program Overview}
+
+The program begins by prompting the user to choose a list from three available options. The user is then shown, which commands can be used in the program. The possible commands are:
+\begin{itemize}
+\item adding a new task or product
+\item updating its status
+\item removing it from the list
+\item printing the list either on the screen or to the file
+\item renaming the list
+\item printing list of available commands
+\item quitting the list
+\end{itemize}
+The program ends when while choosing a list the user inputs incorrect choice, which is told to the user at the beginning of the program.
+
+The user is given the flexibility to use the program in many ways and in quick pace, with short and intuitive commands. The manual is easily accessible from within the program and gives detailed description of how the program can be used.
+
+\section{Testing}
+
+The program has been tested with various types of inputs. Incorrect ones are detected and an error message is printed. The program prevents the user from inputting a word where a number is required, which would cause the program to fail and has protections needed with output file operations.
+
+
+\end{document}
