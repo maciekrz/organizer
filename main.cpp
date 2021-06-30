@@ -2,7 +2,6 @@
 #include "organizer.h"
 #include "libraries.h"
 
-
 int main()    
 {
     Organizer o1("home"), o2("work");
