@@ -2,6 +2,7 @@
 
 \usepackage{polski}
 \usepackage[utf8]{inputenc}
+\usepackage{listings}
 
 \begin{document}
 
@@ -25,7 +26,7 @@
 	\vfill
 \end{titlepage}
 
-\renewcommand*\contentsname{Summary}
+\renewcommand*\contentsname{Table of contents}
 \tableofcontents
 \pagebreak
 
@@ -54,7 +55,36 @@ Inheritance diagrams and methods' descriptions are in the Doxygen part of the re
 
 The data structure being used in the program is the vector, which stores objects being either tasks or products, depending of list's type. Using vectors allows having a data structure with variable size and easy adding, modifying and removing elements.  
 
-\vfill
+\pagebreak
+
+\section{Algorithms}
+
+The program uses simple and not complicated algorithms. To make the program faster, it takes advantage of std::string\_view instead of std::string in cases, where the string of text wouldn't be modified (e.g.\ when setting a new name for a task). This is because the std::string\_view doesn't allocate memory as std::string does.
+
+Exemplary method, which removes finished tasks:
+\begin{lstlisting}
+void Organizer::removeFinished()
+{
+    int i = 0;
+    for (auto x : this->list)   
+    {
+        if (x.status)   
+        {
+            this->list.erase(this->list.begin() + i);
+        }
+        i++;
+    }
+}
+\end{lstlisting}
+Exemplary method, which uses std::string\_view:
+\begin{lstlisting}
+void Product::set(std::string_view _name, double _cost)
+{
+    this->name = _name;
+    this->cost = _cost;
+    this->status = false;
+}
+\end{lstlisting}
 
 \section{Program Overview}
 
