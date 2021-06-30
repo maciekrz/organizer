@@ -1,5 +1,4 @@
 *.exe
-backup.cpp
 *.sln
 *.vcx*
 .vs
