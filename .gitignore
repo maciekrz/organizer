@@ -6,3 +6,6 @@ backup.cpp
 .vs
 Debug
 *.txt
+doxyconfig
+latex
+html
