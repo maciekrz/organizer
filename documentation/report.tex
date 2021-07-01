@@ -3,6 +3,7 @@
 \usepackage{polski}
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
+\usepackage{hyperref}
 
 \begin{document}
 
@@ -86,6 +87,11 @@ void Product::set(std::string_view _name, double _cost)
 }
 \end{lstlisting}
 
+The rest of the methods as well with overloaded functions and operators are also in the Doxygen part of the report.
+The program doesn't use global variables.
+
+\pagebreak
+
 \section{Program Overview}
 
 The program begins by prompting the user to choose a list from three available options. The user is then shown, which commands can be used in the program. The possible commands are:
@@ -102,9 +108,19 @@ The program ends when while choosing a list the user inputs incorrect choice, wh
 
 The user is given the flexibility to use the program in many ways and in quick pace, with short and intuitive commands. The manual is easily accessible from within the program and gives detailed description of how the program can be used.
 
+\section{External Specification}
+
+The program has an option to output a chosen list to a text file. The text file has a name corresponding to the given list. The list in the file looks the same as in the console.
+
 \section{Testing}
 
-The program has been tested with various types of inputs. Incorrect ones are detected and an error message is printed. The program prevents the user from inputting a word where a number is required, which would cause the program to fail and has protections needed with output file operations.
+The program has been tested with various types of inputs. Incorrect ones are detected and an error message is printed. The program prevents the user from inputting a word where a number is required, which would cause the program to fail, and has protections needed with output file operations.
 
+\section{Conclusion}
+
+The program takes advantage of basic characteristics of object oriented programming, such as inheritance or polymorphism, as well as overloading. It also uses uncomplicated algorithms and focuses on fast execution of the code.
+\linebreak
+\linebreak
+github link: \url{https://github.com/maciekrz/organizer}
 
 \end{document}
